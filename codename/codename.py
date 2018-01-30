@@ -3,6 +3,7 @@ Codename generator.
 
 Credits to projectcodename.com
 """
+from hashlib import sha1
 from random import choice
 from argparse import ArgumentParser
 
@@ -73,11 +74,20 @@ OBJECTS = [
 ]
 
 
-def codename(capitalize=False, uppercase=False, separator=' '):
+def codename(capitalize=False, uppercase=False, separator=' ', id=None):
     """
     Generate and return a codename consisting of adjective and noun.
     """
-    words = [choice(ATTRIBUTES), choice(OBJECTS)]
+    if id:
+        id_hash = sha1(id.strip().encode('utf-8')).hexdigest()
+        seed1 = int(id_hash[:20], 16)
+        seed2 = int(id_hash[20:], 16)
+        words = [
+            ATTRIBUTES[seed1 % len(ATTRIBUTES)],
+            OBJECTS[seed2 % len(OBJECTS)]
+        ]
+    else:
+        words = [choice(ATTRIBUTES), choice(OBJECTS)]
     if capitalize:
         words = list(map(str.capitalize, words))
     if uppercase:
@@ -104,6 +114,11 @@ def main():
         '-s', '--separator',
         help='String to use to join words. Defaults to whitespace.',
         default=' '
+    )
+    parser.add_argument(
+        '-i', '--id',
+        help='String to use as random seed for deterministic codenames.',
+        default=None
     )
     args = parser.parse_args()
     print(codename(**vars(args)))

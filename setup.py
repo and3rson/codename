@@ -12,7 +12,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='codename',
-    version='1.0',
+    version='1.1',
     description='Codename generator. Credits to "projectcodename.com".',
     long_description=long_description,
     url='https://github.com/and3rson/codename',
