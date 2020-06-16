@@ -66,7 +66,7 @@ OBJECTS = [
     "horn", "tuba", "clarinet", "saxophone", "piccolo", "violin", "harp",
     "cello", "drum", "organ", "banjo", "rhythm", "beat", "sound", "song",
     # Tools
-    "screwdiver", "sander", "lathe", "mill", "welder", "mask", "hammer",
+    "screwdriver", "sander", "lathe", "mill", "welder", "mask", "hammer",
     "drill", "compressor", "wrench", "mixer", "router", "vacuum",
     # Other
     "warning", "presence", "weapon", "player", "ink", "case", "cup", "chain",
